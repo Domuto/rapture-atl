@@ -27,11 +27,20 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: `${site.name} — Custom Screen Printing & Embroidery in Atlanta`,
     description: site.description,
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Rapture ATL custom apparel printing",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — Custom Printing in Atlanta`,
     description: site.description,
+    images: ["/opengraph-image"],
   },
   robots: { index: true, follow: true },
 };

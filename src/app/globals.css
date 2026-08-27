@@ -66,13 +66,10 @@ body {
   font-size: 0.7rem;
 }
 
-/* ── Futuristic text wordmark ───────────────────────────────────
-   Placeholder logo: tracked-out mono, cyan sheen sweep, spot-ink
-   accent block. Purely type-based — swap for a mark later.      */
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 0.55em;
+  gap: 0.45em;
   font-family: var(--font-mono);
   font-weight: 700;
   text-transform: uppercase;
@@ -81,42 +78,15 @@ body {
 }
 
 .wordmark-main {
-  letter-spacing: 0.34em;
-  background: linear-gradient(
-    100deg,
-    var(--color-paper) 0%,
-    var(--color-flash) 50%,
-    var(--color-paper) 100%
-  );
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 0 10px rgba(22, 208, 230, 0.35));
-  animation: wordmark-sheen 7s linear infinite;
+  color: var(--color-paper);
+  letter-spacing: 0.18em;
 }
 
 .wordmark-accent {
-  letter-spacing: 0.26em;
-  color: var(--color-spot);
-  border: 1px solid color-mix(in srgb, var(--color-spot) 55%, transparent);
-  padding: 0.16em 0.42em;
-  filter: drop-shadow(0 0 9px rgba(255, 59, 33, 0.45));
-}
-
-@keyframes wordmark-sheen {
-  from {
-    background-position: 220% 0;
-  }
-  to {
-    background-position: -220% 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .wordmark-main {
-    animation: none;
-  }
+  border-left: 2px solid var(--color-flash);
+  color: var(--color-flash);
+  letter-spacing: 0.12em;
+  padding-left: 0.45em;
 }
 
 /* ── Signature: misregistered headline ──────────────────────────
