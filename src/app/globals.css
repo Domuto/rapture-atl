@@ -1,0 +1,271 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   Rapture ATL design tokens
+   Palette reads as a press in mid-run: ink black, paper, and the
+   three spot inks sitting slightly out of registration.
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  --color-ink: #0d0d0f;
+  --color-ink-2: #151519;
+  --color-ink-3: #232329;
+  --color-paper: #f1efe9;
+  --color-paper-2: #e2ded3;
+  --color-spot: #ff3b21;
+  --color-flash: #16d0e6;
+  --color-gold: #ffc93c;
+
+  --font-display: var(--font-display-face), "Arial Narrow", system-ui, sans-serif;
+  --font-sans: var(--font-body-face), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-spot);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--color-spot);
+  color: var(--color-paper);
+}
+
+/* Display type: tight, condensed, all caps by default */
+.display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.86;
+  font-weight: 400;
+}
+
+.label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+}
+
+/* ── Futuristic text wordmark ───────────────────────────────────
+   Placeholder logo: tracked-out mono, cyan sheen sweep, spot-ink
+   accent block. Purely type-based — swap for a mark later.      */
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.wordmark-main {
+  letter-spacing: 0.34em;
+  background: linear-gradient(
+    100deg,
+    var(--color-paper) 0%,
+    var(--color-flash) 50%,
+    var(--color-paper) 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 10px rgba(22, 208, 230, 0.35));
+  animation: wordmark-sheen 7s linear infinite;
+}
+
+.wordmark-accent {
+  letter-spacing: 0.26em;
+  color: var(--color-spot);
+  border: 1px solid color-mix(in srgb, var(--color-spot) 55%, transparent);
+  padding: 0.16em 0.42em;
+  filter: drop-shadow(0 0 9px rgba(255, 59, 33, 0.45));
+}
+
+@keyframes wordmark-sheen {
+  from {
+    background-position: 220% 0;
+  }
+  to {
+    background-position: -220% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wordmark-main {
+    animation: none;
+  }
+}
+
+/* ── Signature: misregistered headline ──────────────────────────
+   Four stacked copies of the same word. Three spot-ink layers sit
+   off-register and lock toward the black layer on load, the way a
+   press comes into registration on the first few pulls.        */
+.misprint {
+  position: relative;
+  display: block;
+  isolation: isolate;
+}
+
+.misprint-layer {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  will-change: transform;
+  transform: translate(calc(var(--dx) * 0.3), calc(var(--dy) * 0.3));
+  animation: registration 1200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes registration {
+  from {
+    transform: translate(var(--dx), var(--dy));
+    opacity: 0.35;
+  }
+  to {
+    transform: translate(calc(var(--dx) * 0.3), calc(var(--dy) * 0.3));
+    opacity: 1;
+  }
+}
+
+.misprint-top {
+  position: relative;
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .misprint-layer {
+    animation: none;
+  }
+}
+
+/* ── Halftone dot field ─────────────────────────────────────── */
+.halftone {
+  background-image: radial-gradient(currentColor 1px, transparent 1.3px);
+  background-size: 7px 7px;
+}
+
+.halftone-fade {
+  -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
+  mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+/* ── Marquee ticker ─────────────────────────────────────────── */
+.marquee {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+}
+
+.marquee-track {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
+  min-width: 100%;
+  animation: marquee-scroll var(--marquee-duration, 34s) linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ── Scroll reveal ──────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Registration crosshair used as a section marker ────────── */
+.regmark {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+.regmark::before,
+.regmark::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+.regmark::before {
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+.regmark::after {
+  top: 50%;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  transform: translateY(-50%);
+}
+
+/* ── Link underline that draws on hover ─────────────────────── */
+.ink-link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 1px;
+  transition: background-size 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ink-link:hover {
+  background-size: 100% 1px;
+}
