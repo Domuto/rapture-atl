@@ -1,136 +1,65 @@
 import Link from "next/link";
-import Hero from "@/components/Hero";
-import ServiceCard from "@/components/ServiceCard";
-import ProcessSteps from "@/components/ProcessSteps";
-import Testimonials from "@/components/Testimonials";
-import LogoWall from "@/components/LogoWall";
-import FaqAccordion from "@/components/FaqAccordion";
-import CtaBanner from "@/components/CtaBanner";
-import SectionHeading from "@/components/SectionHeading";
-import Reveal from "@/components/Reveal";
-import { services } from "@/lib/services";
-import { faqs } from "@/lib/content";
-import { site } from "@/lib/site";
 
-const learnMore = [
-  { slug: "screen-printing", label: "Screen Printing" },
-  { slug: "dtg", label: "DTG" },
-  { slug: "embroidery", label: "Embroidery" },
-].map((item) => ({
-  ...item,
-  service: services.find((s) => s.slug === item.slug)!,
-}));
+const services = [
+  {
+    label: "Screen Printing",
+    href: "/services/screen-printing",
+    image: "/services/screen-printing.jpg",
+  },
+  { label: "DTG", href: "/services/dtg", image: "/services/dtg.jpg" },
+  {
+    label: "Embroidery",
+    href: "/services/embroidery",
+    image: "/services/embroidery.jpg",
+  },
+];
 
 export default function HomePage() {
   return (
-    <>
-      <Hero />
-
-      {/* Learn more — pick a method */}
-      <section className="border-b border-paper/10 bg-ink-2">
-        <div className="mx-auto max-w-7xl px-6 py-16 sm:py-20">
           <p className="label flex items-center gap-3 text-paper/55">
-            <span className="regmark text-flash" />
-            Start here
-          </p>
-          <h2 className="mt-6 display text-[clamp(2rem,6vw,3.5rem)]">
-            I&apos;d like to learn more about
-          </h2>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
-            {learnMore.map((item, i) => (
-              <Reveal key={item.slug} delay={i * 70} className="h-full">
-                <Link
-                  href={`/services/${item.slug}`}
-                  className="group flex h-full flex-col justify-between border border-paper/15 bg-ink p-8 transition-colors hover:border-flash hover:bg-ink-3"
-                >
-                  <span className="label text-flash">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="display mt-12 text-4xl sm:text-5xl">{item.label}</span>
-                  <span className="mt-4 text-paper/60">{item.service.short}</span>
-                  <span className="mt-8 flex items-center gap-2 border-t border-paper/10 pt-4">
-                    <span className="label text-paper/70 group-hover:text-paper">Learn more</span>
-                    <span
-                      aria-hidden="true"
-                      className="text-flash transition-transform group-hover:translate-x-1"
-                    >
-                      →
-                    </span>
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:py-28">
-        <SectionHeading
-          eyebrow="What we do"
-          title="Every method under one roof"
-          intro="Different jobs want different machines. Here's the honest version of what each one is good at."
-        />
-
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.slice(0, 4).map((service, i) => (
-            <Reveal key={service.slug} delay={i * 70} className="h-full">
-              <ServiceCard service={service} index={i} />
-            </Reveal>
-          ))}
-        </div>
-
-        <div className="mt-8 flex flex-wrap gap-3">
-          {services.slice(4).map((service) => (
-            <Link
-              key={service.slug}
-              href={`/services/${service.slug}`}
-              className="label border border-paper/20 px-5 py-3 text-paper/65 transition-colors hover:border-paper hover:text-paper"
-            >
-              {service.name}
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <LogoWall />
-
-      {/* Process */}
-      <section className="bg-paper py-20 text-ink sm:py-28">
-        <div className="mx-auto max-w-7xl px-6">
-          <SectionHeading
-            eyebrow="How it works"
-            title="Three steps, no runaround"
-            tone="ink"
-            intro="Most shops make you chase them. This is the whole process."
-          />
-          <div className="mt-14">
-            <ProcessSteps />
-          </div>
-        </div>
-      </section>
-
-      <Testimonials />
-
-      {/* FAQ */}
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:py-28">
-        <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
-          <div>
-            <SectionHeading eyebrow="Before you ask" title="Questions we get daily" />
-            <Link
-              href="/faq"
-              className="label mt-8 inline-flex border border-paper/25 px-6 py-4 transition-colors hover:bg-paper hover:text-ink"
-            >
-              Read all FAQs
-            </Link>
-          </div>
-          <FaqAccordion items={faqs.slice(0, 5)} />
-        </div>
-      </section>
-
-      <CtaBanner
-        title="Let's print something."
-        body={`Walk in during business hours or send it over — ${site.name} quotes every job by hand.`}
+    <section className="relative min-h-[calc(100svh-73px)] overflow-hidden bg-ink">
+      <div
+        aria-hidden="true"
+        className="halftone pointer-events-none absolute inset-0 text-flash/[0.07]"
       />
-    </>
+      <div className="relative mx-auto flex min-h-[calc(100svh-73px)] max-w-7xl flex-col justify-center px-6 py-14 sm:py-20">
+        <p className="label flex items-center gap-3 text-paper/60">
+          <span className="regmark text-flash" />
+          Welcome to Rapture ATL
+        </p>
+        <h1 className="mt-7 max-w-4xl display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.9]">
+          I&apos;d like to learn more about
+        </h1>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {services.map((service, index) => (
+            <Link
+              key={service.href}
+              href={service.href}
+              className="group relative isolate min-h-72 overflow-hidden border border-paper/20 bg-ink-2 focus-visible:outline-offset-[-5px]"
+            >
+              <img
+                src={service.image}
+                alt=""
+                className="absolute inset-0 -z-20 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/30 to-ink/10 transition-colors duration-300 group-hover:from-ink/90 group-hover:via-ink/45" />
+              <div className="flex h-full min-h-72 flex-col justify-between p-6 sm:p-7">
+                <span className="label text-flash">{String(index + 1).padStart(2, "0")}</span>
+                <span className="flex items-end justify-between gap-4 border-t border-paper/30 pt-4">
+                  <span className="display text-4xl leading-none sm:text-5xl">{service.label}</span>
+                  <span
+                    aria-hidden="true"
+                    className="mb-1 text-2xl text-flash transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
