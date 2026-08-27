@@ -22,15 +22,7 @@ export default function HomePage() {
         className="halftone pointer-events-none absolute inset-0 text-flash/[0.07]"
       />
       <div className="relative mx-auto flex min-h-[calc(100svh-73px)] max-w-7xl flex-col justify-center px-6 py-14 sm:py-20">
-        <p className="label flex items-center gap-3 text-paper/60">
-          <span className="regmark text-flash" />
-          Welcome to Rapture ATL
-        </p>
-        <h1 className="mt-7 max-w-4xl display text-[clamp(2.5rem,7vw,5.5rem)] leading-[0.9]">
-          I&apos;d like to learn more about
-        </h1>
-
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3">
           {services.map((service, index) => (
             <Link
               key={service.href}
