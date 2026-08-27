@@ -16,7 +16,6 @@ const services = [
 
 export default function HomePage() {
   return (
-          <p className="label flex items-center gap-3 text-paper/55">
     <section className="relative min-h-[calc(100svh-73px)] overflow-hidden bg-ink">
       <div
         aria-hidden="true"
