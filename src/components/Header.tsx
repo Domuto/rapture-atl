@@ -9,9 +9,12 @@ export default function Header() {
           <span className="wordmark-main">Rapture Fabrications</span>
           <span className="wordmark-accent">ATL</span>
         </Link>
-        <nav>
+        <nav className="flex items-center gap-6">
           <Link href="/work" className="label ink-link text-paper/70 hover:text-paper">
             Our Work
+          </Link>
+          <Link href="/about" className="label ink-link text-paper/70 hover:text-paper">
+            About
           </Link>
         </nav>
       </div>

@@ -40,10 +40,12 @@ export default function OpengraphImage() {
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", zIndex: 1 }}>
-          <div style={{ display: "flex", alignItems: "center", fontSize: 126, fontWeight: 700, color: "#f1efe9", letterSpacing: 5 }}>
-            RAPTURE
-            <span style={{ height: 92, width: 4, backgroundColor: "#2fff00", marginLeft: 32, marginRight: 28 }} />
-            <span style={{ color: "#2fff00", letterSpacing: 10 }}>ATL</span>
+          <div style={{ display: "flex", fontSize: 78, fontWeight: 700, color: "#f1efe9", letterSpacing: 4 }}>
+            RAPTURE FABRICATIONS
+          </div>
+          <div style={{ display: "flex", alignItems: "center", marginTop: 12, fontSize: 78, fontWeight: 700, color: "#2fff00", letterSpacing: 10 }}>
+            <span style={{ height: 60, width: 4, backgroundColor: "#2fff00", marginRight: 26 }} />
+            ATL
           </div>
           <div style={{ display: "flex", marginTop: 30, fontSize: 34, color: "#f1efe9", opacity: 0.8 }}>
             SCREEN PRINTING  /  DTG  /  EMBROIDERY

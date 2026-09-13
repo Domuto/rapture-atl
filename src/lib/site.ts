@@ -17,9 +17,9 @@ export const site = {
       : "https://raptureatl.com"),
 
   // TODO — real contact details
-  phone: "(404) 555-0142",
-  phoneHref: "tel:+14045550142",
-  textLine: "(404) 555-0142",
+  phone: "(404) 477-4536",
+  phoneHref: "tel:+14044774536",
+  textLine: "(404) 477-4536",
   email: "hello@raptureatl.com",
 
   address: {

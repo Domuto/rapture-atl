@@ -10,12 +10,10 @@ export const metadata: Metadata = {
 };
 
 const equipment = [
-  { name: "Automatic press", detail: "8 color / 10 station" },
-  { name: "Manual press", detail: "6 color, live event ready" },
-  { name: "Embroidery heads", detail: "Multi-head, 15 needle" },
-  { name: "DTF printer", detail: "24\" roll + shaker" },
+  { name: "Manual press", detail: "8 color, 8 head" },
+  { name: "Embroidery heads", detail: "Single head, 15 needle" },
   { name: "DTG printer", detail: "White + CMYK" },
-  { name: "Conveyor dryer", detail: "Gas, 320°F cure" },
+  { name: "Conveyor dryer", detail: "Electric, 320°F cure" },
 ];
 
 export default function AboutPage() {
@@ -42,12 +40,9 @@ export default function AboutPage() {
               out your file won&apos;t work.
             </p>
             <p className="text-xl leading-relaxed text-paper/75">
-              We started because the brands we came up around kept getting the same treatment:
-              vague pricing, missed dates, prints that cracked after two washes. So the whole
-              shop runs on the opposite of that. Real numbers, real dates, and a phone someone
-              actually answers.
-              {" "}
-              <span className="text-paper/45">(TODO: replace with your real story.)</span>
+              We started this from our own passion to create garments locally after dealing with
+              unreliable printers. Working with us you get quick responses, accurate dates, and a
+              phone that someone actually answers.
             </p>
           </div>
         </div>
@@ -63,7 +58,6 @@ export default function AboutPage() {
             </Reveal>
           ))}
         </div>
-        <p className="mt-6 text-sm text-paper/35">TODO: update with your actual equipment list.</p>
       </section>
 
       <section className="border-t border-paper/10 bg-paper py-20 text-ink sm:py-24">
