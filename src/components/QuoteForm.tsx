@@ -157,14 +157,19 @@ export default function QuoteForm({ initialService = "" }: { initialService?: st
 
       <div className="sm:col-span-2">
         <label className={labelClass} htmlFor="artwork">
-          Artwork link
+          Artwork upload
         </label>
         <input
           id="artwork"
           name="artwork"
-          className={fieldClass}
-          placeholder="Dropbox, Drive or WeTransfer link"
+          type="file"
+          accept="image/*,.pdf,.ai,.eps,.psd,.svg"
+          multiple
+          className="block w-full cursor-pointer border border-paper/20 bg-ink-2 text-paper/70 file:mr-4 file:cursor-pointer file:border-0 file:bg-spot file:px-5 file:py-3.5 file:text-paper file:transition-colors hover:file:brightness-110 focus:border-spot focus:outline-none"
         />
+        <p className="mt-2 text-sm text-paper/40">
+          PNG, JPG, PDF, AI, EPS, PSD or SVG. Up to 5MB total.
+        </p>
       </div>
 
       <div className="sm:col-span-2">
