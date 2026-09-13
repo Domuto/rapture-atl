@@ -62,14 +62,14 @@ export default function WorkGrid() {
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {shown.map((item) => (
           <article key={item.title} className="group">
-            <div className="relative aspect-4/5 overflow-hidden">
+            <div className="relative aspect-4/5 overflow-hidden bg-ink">
               {item.image ? (
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-contain transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
               ) : (
                 <div className={`flex h-full w-full items-center justify-center ${tone[item.tone]}`}>
@@ -78,13 +78,6 @@ export default function WorkGrid() {
                 </div>
               )}
             </div>
-            <div className="mt-4 flex items-baseline justify-between gap-4">
-              <h3 className="display text-2xl">{item.title}</h3>
-              <span className="label text-paper/40">{item.category}</span>
-            </div>
-            <p className="mt-1 text-paper/60">
-              {item.method} · {item.detail}
-            </p>
           </article>
         ))}
       </div>
