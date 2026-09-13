@@ -5,34 +5,40 @@ import { services } from "@/lib/services";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+const WEB3FORMS_ACCESS_KEY = "99859e8c-0972-40b6-9684-8fe131cace98";
+
 const fieldClass =
   "w-full border border-paper/20 bg-ink-2 px-4 py-3.5 text-paper placeholder:text-paper/30 focus:border-spot focus:outline-none";
 
 const labelClass = "label mb-2 block text-paper/55";
 
-export default function QuoteForm() {
+export default function QuoteForm({ initialService = "" }: { initialService?: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string>("");
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const formData = new FormData(form);
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+    formData.append(
+      "subject",
+      `Quote request — ${formData.get("name") || "New lead"} (${formData.get("service") || "unspecified"})`,
+    );
 
     setStatus("sending");
     setError("");
 
     try {
-      const res = await fetch("/api/quote", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: formData,
       });
 
       const json = await res.json();
 
-      if (!res.ok) {
-        throw new Error(json?.error || "That didn't go through.");
+      if (!res.ok || !json?.success) {
+        throw new Error(json?.message || "That didn't go through.");
       }
 
       setStatus("sent");
@@ -104,7 +110,7 @@ export default function QuoteForm() {
         <label className={labelClass} htmlFor="service">
           What do you need? *
         </label>
-        <select id="service" name="service" required defaultValue="" className={fieldClass}>
+        <select id="service" name="service" required defaultValue={initialService} className={fieldClass}>
           <option value="" disabled>
             Choose a service
           </option>
@@ -176,8 +182,8 @@ export default function QuoteForm() {
 
       {/* Honeypot — bots fill this, people never see it */}
       <input
-        type="text"
-        name="company_website"
+        type="checkbox"
+        name="botcheck"
         tabIndex={-1}
         autoComplete="off"
         aria-hidden="true"

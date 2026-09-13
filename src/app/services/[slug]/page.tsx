@@ -90,12 +90,6 @@ export default async function ServicePage({ params }: Params) {
           >
             <span className="display text-2xl">Quote this job</span>
           </Link>
-          <Link
-            href="/work"
-            className="border border-paper/25 px-8 py-5 transition-colors hover:bg-paper hover:text-ink"
-          >
-            <span className="display text-2xl">See the work</span>
-          </Link>
         </div>
       </section>
 

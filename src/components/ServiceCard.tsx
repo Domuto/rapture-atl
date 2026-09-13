@@ -16,7 +16,7 @@ const accentBorder = {
 export default function ServiceCard({ service, index }: { service: Service; index: number }) {
   return (
     <Link
-      href={`/services/${service.slug}`}
+      href={`/quote?service=${service.slug}`}
       className={`group flex h-full flex-col justify-between border border-paper/12 bg-ink-2 p-7 transition-colors hover:bg-ink-3 ${accentBorder[service.accent]}`}
     >
       <div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Misprint from "@/components/Misprint";
 import QuoteForm from "@/components/QuoteForm";
 import { site } from "@/lib/site";
+import { services } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "Get a quote",
@@ -29,7 +30,14 @@ const roughPricing = [
   },
 ];
 
-export default function QuotePage() {
+export default async function QuotePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ service?: string }>;
+}) {
+  const { service: serviceParam } = await searchParams;
+  const initialService = services.find((s) => s.slug === serviceParam)?.name ?? "";
+
   return (
     <section className="relative overflow-hidden">
       <div
@@ -108,7 +116,7 @@ export default function QuotePage() {
           </div>
 
           <div className="border border-paper/12 bg-ink-2 p-6 sm:p-10">
-            <QuoteForm />
+            <QuoteForm initialService={initialService} />
           </div>
         </div>
       </div>

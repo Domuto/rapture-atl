@@ -3,13 +3,13 @@ import Link from "next/link";
 const services = [
   {
     label: "Screen Printing",
-    href: "/services/screen-printing",
+    href: "/quote?service=screen-printing",
     image: "/services/screen-printing.jpg",
   },
-  { label: "DTG", href: "/services/dtg", image: "/services/dtg.jpg" },
+  { label: "DTG", href: "/quote?service=dtg", image: "/services/dtg.jpg" },
   {
     label: "Embroidery",
-    href: "/services/embroidery",
+    href: "/quote?service=embroidery",
     image: "/services/embroidery.jpg",
   },
 ];
