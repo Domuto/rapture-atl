@@ -21,10 +21,12 @@ export default function QuoteForm({ initialService = "" }: { initialService?: st
     const form = event.currentTarget;
     const formData = new FormData(form);
     formData.append("access_key", WEB3FORMS_ACCESS_KEY);
-    formData.append(
-      "subject",
-      `Quote request — ${formData.get("name") || "New lead"} (${formData.get("service") || "unspecified"})`,
-    );
+    formData.append("subject", `Quote request — ${formData.get("name") || "New lead"} (${formData.get("service") || "unspecified"})`);
+    formData.append("from_name", "Rapture Fabrications website");
+    // Route inquiries to the shop inbox; reply goes straight back to the lead.
+    formData.append("to", "info@rapturefabrications.com");
+    const leadEmail = formData.get("email");
+    if (leadEmail) formData.append("replyto", String(leadEmail));
 
     setStatus("sending");
     setError("");

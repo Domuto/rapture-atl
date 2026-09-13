@@ -22,19 +22,27 @@ export default function CtaBanner({
           </h2>
           <p className="mt-6 text-lg text-ink/80 sm:text-xl">{body}</p>
         </div>
-        <div className="flex flex-col gap-4 sm:flex-row lg:pb-2">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start lg:pb-2">
           <Link
             href="/quote"
             className="bg-ink px-8 py-5 text-center text-paper transition-transform hover:-translate-y-0.5"
           >
             <span className="display text-2xl">Start a quote</span>
           </Link>
-          <a
-            href={site.phoneHref}
-            className="border border-ink/40 px-8 py-5 text-center transition-colors hover:bg-ink hover:text-paper"
-          >
-            <span className="display text-2xl">{site.phone}</span>
-          </a>
+          <div className="flex flex-col gap-4">
+            <a
+              href={site.phoneHref}
+              className="border border-ink/40 px-8 py-5 text-center transition-colors hover:bg-ink hover:text-paper"
+            >
+              <span className="display whitespace-nowrap text-2xl">{site.phone}</span>
+            </a>
+            <a
+              href={`mailto:${site.email}`}
+              className="border border-ink/40 px-8 py-5 text-center transition-colors hover:bg-ink hover:text-paper"
+            >
+              <span className="display whitespace-nowrap text-2xl">{site.email}</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>

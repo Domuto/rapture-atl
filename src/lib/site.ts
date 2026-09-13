@@ -20,7 +20,7 @@ export const site = {
   phone: "(404) 477-4536",
   phoneHref: "tel:+14044774536",
   textLine: "(404) 477-4536",
-  email: "hello@raptureatl.com",
+  email: "info@rapturefabrications.com",
 
   address: {
     street: "1234 Marietta St NW, Suite B", // TODO
