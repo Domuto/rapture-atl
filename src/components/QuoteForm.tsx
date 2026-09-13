@@ -165,7 +165,7 @@ export default function QuoteForm({ initialService = "" }: { initialService?: st
           type="file"
           accept="image/*,.pdf,.ai,.eps,.psd,.svg"
           multiple
-          className="block w-full cursor-pointer border border-paper/20 bg-ink-2 text-paper/70 file:mr-4 file:cursor-pointer file:border-0 file:bg-spot file:px-5 file:py-3.5 file:text-paper file:transition-colors hover:file:brightness-110 focus:border-spot focus:outline-none"
+          className="block w-full cursor-pointer border border-paper/20 bg-ink-2 text-paper/70 file:mr-4 file:cursor-pointer file:border-0 file:bg-spot file:px-5 file:py-3.5 file:text-ink file:transition-colors hover:file:brightness-110 focus:border-spot focus:outline-none"
         />
         <p className="mt-2 text-sm text-paper/40">
           PNG, JPG, PDF, AI, EPS, PSD or SVG. Up to 5MB total.
@@ -205,7 +205,7 @@ export default function QuoteForm({ initialService = "" }: { initialService?: st
         <button
           type="submit"
           disabled={status === "sending"}
-          className="w-full bg-spot px-8 py-5 text-paper transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+          className="w-full bg-flash px-8 py-5 text-ink transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
         >
           <span className="display text-2xl">
             {status === "sending" ? "Sending…" : "Send quote request"}

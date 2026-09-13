@@ -49,7 +49,7 @@ export default function WorkGrid() {
               aria-pressed={active}
               className={`label border px-5 py-3 transition-colors ${
                 active
-                  ? "border-spot bg-spot text-paper"
+                  ? "border-spot bg-spot text-ink"
                   : "border-paper/20 text-paper/60 hover:border-paper hover:text-paper"
               }`}
             >

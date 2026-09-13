@@ -69,7 +69,7 @@ export default function ContactPage() {
           <h2 className="display text-3xl">Have a job in mind?</h2>
           <p className="mt-2 text-paper/60">The quote form gets you a real number fastest.</p>
         </div>
-        <Link href="/quote" className="bg-spot px-8 py-5 text-center transition-transform hover:-translate-y-0.5">
+        <Link href="/quote" className="bg-spot px-8 py-5 text-center text-ink transition-transform hover:-translate-y-0.5">
           <span className="display text-2xl">Get a quote</span>
         </Link>
       </div>

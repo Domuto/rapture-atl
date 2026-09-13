@@ -13,7 +13,7 @@ export default function NotFound() {
         looking for.
       </p>
       <div className="mt-10 flex flex-wrap gap-4">
-        <Link href="/" className="bg-spot px-8 py-5 transition-transform hover:-translate-y-0.5">
+        <Link href="/" className="bg-spot px-8 py-5 text-ink transition-transform hover:-translate-y-0.5">
           <span className="display text-2xl">Back home</span>
         </Link>
         <Link

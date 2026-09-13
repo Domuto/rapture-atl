@@ -33,7 +33,7 @@ export default function Hero() {
           <div className="flex flex-wrap items-center gap-4">
             <Link
               href="/quote"
-              className="group flex items-center gap-3 bg-spot px-7 py-4 text-paper transition-transform hover:-translate-y-0.5"
+              className="group flex items-center gap-3 bg-spot px-7 py-4 text-ink transition-transform hover:-translate-y-0.5"
             >
               <span className="display text-2xl">Get a quote</span>
               <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">

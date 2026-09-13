@@ -86,7 +86,7 @@ export default async function ServicePage({ params }: Params) {
         <div className="mt-16 flex flex-wrap gap-4">
           <Link
             href="/quote"
-            className="bg-spot px-8 py-5 transition-transform hover:-translate-y-0.5"
+            className="bg-spot px-8 py-5 text-ink transition-transform hover:-translate-y-0.5"
           >
             <span className="display text-2xl">Quote this job</span>
           </Link>

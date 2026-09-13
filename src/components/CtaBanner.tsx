@@ -10,7 +10,7 @@ export default function CtaBanner({
   body?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-spot text-paper">
+    <section className="relative overflow-hidden bg-flash text-ink">
       <div
         aria-hidden="true"
         className="halftone pointer-events-none absolute inset-0 text-ink/20"
@@ -20,18 +20,18 @@ export default function CtaBanner({
           <h2 className="text-[clamp(2.5rem,8vw,6rem)]">
             <Misprint plain>{title}</Misprint>
           </h2>
-          <p className="mt-6 text-lg text-paper/85 sm:text-xl">{body}</p>
+          <p className="mt-6 text-lg text-ink/80 sm:text-xl">{body}</p>
         </div>
         <div className="flex flex-col gap-4 sm:flex-row lg:pb-2">
           <Link
             href="/quote"
-            className="bg-ink px-8 py-5 text-center transition-transform hover:-translate-y-0.5"
+            className="bg-ink px-8 py-5 text-center text-paper transition-transform hover:-translate-y-0.5"
           >
             <span className="display text-2xl">Start a quote</span>
           </Link>
           <a
             href={site.phoneHref}
-            className="border border-paper/50 px-8 py-5 text-center transition-colors hover:bg-paper hover:text-ink"
+            className="border border-ink/40 px-8 py-5 text-center transition-colors hover:bg-ink hover:text-paper"
           >
             <span className="display text-2xl">{site.phone}</span>
           </a>
