@@ -3,7 +3,7 @@
  * Everything with a TODO is placeholder copy — change it here once and it updates sitewide.
  */
 export const site = {
-  name: "Rapture ATL",
+  name: "Rapture Fabrications",
   shortName: "Rapture",
   legalName: "Rapture ATL LLC", // TODO
   city: "Atlanta",

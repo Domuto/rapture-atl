@@ -86,20 +86,21 @@ export type WorkItem = {
   detail: string;
   /** Drop a file in /public/work and set this to "/work/your-file.jpg" */
   image?: string;
+  /** Show the whole image (letterboxed) instead of cropping to fill the tile */
+  contain?: boolean;
   tone: "spot" | "flash" | "gold" | "paper";
 };
 
 export const workItems: WorkItem[] = [
   { title: "Tour merch run", category: "Apparel", method: "4-color screen print", detail: "480 tees", image: "/work/work-1.jpg", tone: "spot" },
   { title: "Staff uniform drop", category: "Apparel", method: "Discharge print", detail: "120 tees", image: "/work/work-2.jpg", tone: "paper" },
-  { title: "Dad cap program", category: "Headwear", method: "3D puff embroidery", detail: "250 caps", image: "/work/work-3.jpg", tone: "gold" },
   { title: "Show poster", category: "Posters", method: "Split-fountain flatstock", detail: "100 numbered", image: "/work/work-4.jpg", tone: "flash" },
   { title: "Launch activation", category: "Events", method: "Live manual press", detail: "6 hours on site", image: "/work/work-5.jpg", tone: "spot" },
   { title: "Capsule hoodies", category: "Apparel", method: "Puff + relabel", detail: "80 pieces", image: "/work/work-6.jpg", tone: "gold" },
   { title: "Festival crew kit", category: "Apparel", method: "DTF transfers", detail: "Mixed blanks", image: "/work/work-7.jpg", tone: "flash" },
   { title: "Gallery print series", category: "Posters", method: "5-color flatstock", detail: "50 signed", image: "/work/work-8.jpg", tone: "paper" },
-  { title: "Beanie + patch set", category: "Headwear", method: "Woven leather patch", detail: "300 units", tone: "spot" },
-  { title: "Tylil live on Twitch", category: "Events", method: "Live stream print session", detail: "On-air merch drop", image: "/work/work-9.jpg", tone: "flash" },
+  { title: "Dad cap program", category: "Headwear", method: "3D puff embroidery", detail: "250 caps", image: "/work/work-3.jpg", tone: "gold" },
+  { title: "Tylil live on Twitch", category: "Events", method: "Live stream print session", detail: "On-air merch drop", image: "/work/work-9.jpg", contain: true, tone: "flash" },
 ];
 
 export const workCategories = ["All", "Apparel", "Headwear", "Posters", "Events"] as const;

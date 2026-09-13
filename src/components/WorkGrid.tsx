@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import { workCategories, workItems, type WorkItem } from "@/lib/content";
+import { workItems, type WorkItem } from "@/lib/content";
 
 const tone: Record<WorkItem["tone"], string> = {
   spot: "bg-spot text-ink",
@@ -12,9 +11,6 @@ const tone: Record<WorkItem["tone"], string> = {
 };
 
 export default function WorkGrid() {
-  const [filter, setFilter] = useState<string>("All");
-  const shown = filter === "All" ? workItems : workItems.filter((w) => w.category === filter);
-
   return (
     <div>
       <div className="relative mb-10 aspect-video overflow-hidden border border-paper/12 sm:aspect-[21/9]">
@@ -38,29 +34,8 @@ export default function WorkGrid() {
         </span>
       </div>
 
-      <div className="flex flex-wrap gap-3" role="group" aria-label="Filter work by category">
-        {workCategories.map((cat) => {
-          const active = filter === cat;
-          return (
-            <button
-              key={cat}
-              type="button"
-              onClick={() => setFilter(cat)}
-              aria-pressed={active}
-              className={`label border px-5 py-3 transition-colors ${
-                active
-                  ? "border-spot bg-spot text-ink"
-                  : "border-paper/20 text-paper/60 hover:border-paper hover:text-paper"
-              }`}
-            >
-              {cat}
-            </button>
-          );
-        })}
-      </div>
-
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {shown.map((item) => (
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {workItems.map((item) => (
           <article key={item.title} className="group">
             <div className="relative aspect-4/5 overflow-hidden bg-ink">
               {item.image ? (
@@ -69,7 +44,9 @@ export default function WorkGrid() {
                   alt={item.title}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className={`transition-transform duration-700 group-hover:scale-105 ${
+                    item.contain ? "object-contain" : "object-cover"
+                  }`}
                 />
               ) : (
                 <div className={`flex h-full w-full items-center justify-center ${tone[item.tone]}`}>

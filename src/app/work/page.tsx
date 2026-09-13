@@ -6,7 +6,7 @@ import CtaBanner from "@/components/CtaBanner";
 export const metadata: Metadata = {
   title: "Work",
   description:
-    "Recent print jobs out of the Rapture ATL shop — apparel, headwear, posters and live event printing.",
+    "Recent print jobs out of the Rapture Fabrications shop — apparel, headwear, posters and live event printing.",
 };
 
 export default function WorkPage() {
