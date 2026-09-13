@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="relative overflow-hidden bg-ink">
       <div
         aria-hidden="true"
-        className="halftone pointer-events-none absolute inset-0 text-flash/[0.07]"
+        className="halftone pointer-events-none absolute inset-0 text-[#2fff00]/[0.07]"
       />
       <div className="relative mx-auto max-w-7xl px-6 pb-8 pt-4">
         <div className="flex flex-col justify-between gap-3 text-paper/40 sm:flex-row">

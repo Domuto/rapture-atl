@@ -10,7 +10,11 @@ export const site = {
   tagline: "Atlanta's print shop for people with something to say.",
   description:
     "Custom screen printing, DTF transfers, embroidery and DTG in Atlanta. Low minimums, honest pricing, fast turnarounds for brands, bands, restaurants and events.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://raptureatl.com",
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "https://raptureatl.com"),
 
   // TODO — real contact details
   phone: "(404) 555-0142",

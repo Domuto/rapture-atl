@@ -83,8 +83,8 @@ body {
 }
 
 .wordmark-accent {
-  border-left: 2px solid var(--color-flash);
-  color: var(--color-flash);
+  border-left: 2px solid #2fff00;
+  color: #2fff00;
   letter-spacing: 0.12em;
   padding-left: 0.45em;
 }
