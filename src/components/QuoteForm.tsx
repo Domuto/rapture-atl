@@ -7,6 +7,19 @@ type Status = "idle" | "sending" | "sent" | "error";
 
 const WEB3FORMS_ACCESS_KEY = "99859e8c-0972-40b6-9684-8fe131cace98";
 
+async function uploadToBlob(file: File): Promise<string> {
+  const res = await fetch(`/api/quote/upload?filename=${encodeURIComponent(file.name)}`, {
+    method: "POST",
+    body: file,
+  });
+  const json = await res.json();
+
+  if (!res.ok || !json?.url) {
+    throw new Error(json?.error || "We couldn't upload that image.");
+  }
+  return json.url as string;
+}
+
 const fieldClass =
   "w-full border border-paper/20 bg-ink-2 px-4 py-3.5 text-paper placeholder:text-paper/30 focus:border-spot focus:outline-none";
 
@@ -20,6 +33,36 @@ export default function QuoteForm({ initialService = "" }: { initialService?: st
     event.preventDefault();
     const form = event.currentTarget;
     const formData = new FormData(form);
+
+    // web3forms' free plan rejects file attachments, so upload to Vercel Blob
+    // instead and send the public links as text fields.
+    const fileInput = form.elements.namedItem("artwork") as HTMLInputElement | null;
+    const files = fileInput?.files ? Array.from(fileInput.files) : [];
+    formData.delete("artwork");
+
+    if (files.length) {
+      const totalBytes = files.reduce((sum, file) => sum + file.size, 0);
+      if (totalBytes > 25 * 1024 * 1024) {
+        setStatus("error");
+        setError("Those files are too large — keep it under 25MB total.");
+        return;
+      }
+
+      setStatus("sending");
+      setError("");
+
+      try {
+        const links = await Promise.all(files.map(uploadToBlob));
+        links.forEach((link, index) => {
+          formData.append(`artwork_${index + 1}`, link);
+        });
+      } catch (err) {
+        setStatus("error");
+        setError(err instanceof Error ? err.message : "We couldn't upload your artwork.");
+        return;
+      }
+    }
+
     formData.append("access_key", WEB3FORMS_ACCESS_KEY);
     formData.append("subject", `Quote request — ${formData.get("name") || "New lead"} (${formData.get("service") || "unspecified"})`);
     formData.append("from_name", "Rapture Fabrications website");
@@ -165,12 +208,13 @@ export default function QuoteForm({ initialService = "" }: { initialService?: st
           id="artwork"
           name="artwork"
           type="file"
-          accept="image/*,.pdf,.ai,.eps,.psd,.svg"
+          accept="image/*"
           multiple
           className="block w-full cursor-pointer border border-paper/20 bg-ink-2 text-paper/70 file:mr-4 file:cursor-pointer file:border-0 file:bg-spot file:px-5 file:py-3.5 file:text-ink file:transition-colors hover:file:brightness-110 focus:border-spot focus:outline-none"
         />
         <p className="mt-2 text-sm text-paper/40">
-          PNG, JPG, PDF, AI, EPS, PSD or SVG. Up to 5MB total.
+          PNG, JPG, GIF or WEBP. Up to 25MB total. For vector files (AI, EPS, PSD, PDF) drop a
+          download link in the notes below.
         </p>
       </div>
 
